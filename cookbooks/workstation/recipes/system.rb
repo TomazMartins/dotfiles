@@ -1,13 +1,13 @@
 # ============================================================
-# FIRST STEPS AFTER INSTALL UBUNTU
+# UPDATE AND UPGRADE UBUNTU
 # ============================================================
 execute 'Update: System' do
-  command 'sudo apt update'
+  command 'sudo apt update -y'
   action :run
 end
 
 execute 'Upgrade: System' do
-  command 'sudo apt upgrade'
+  command 'sudo apt upgrade -y'
   action :run
 end
 
@@ -21,6 +21,23 @@ package 'Install: apt-transport-https' do
   options '--force-yes'
   action :install
 end
+
+# Por conta de questões legais, o Ubuntu não inclui alguns
+# codecs de mídia para reproduzir arquivos de áudio e vídeo
+# através do reprodutor de mídia Totem padrão e do reprodutor
+# de música Rhythmbox.
+#
+# WARNING: Pesquisar como aceitar os termos de uso automaticamente....
+package 'Install: Third Codes' do
+  package_name 'ubuntu-restricted-extras'
+  options '--force-yes'
+  action :install
+end
+
+
+# ============================================================
+# CUSTOMIZE UBUNTU
+# ============================================================
 
 # É um aglomerador de configurações para o Gnome. Serve para
 # habilitar uma interface que permite acesso a configurações
@@ -46,18 +63,6 @@ execute 'Configure: night light' do
   action :run
 end
 
-# Por conta de questões legais, o Ubuntu não inclui alguns
-# codecs de mídia para reproduzir arquivos de áudio e vídeo
-# através do reprodutor de mídia Totem padrão e do reprodutor
-# de música Rhythmbox.
-#
-# WARNING: Pesquisar como aceitar os termos de uso automaticamente....
-package 'Install: Third Codes' do
-  package_name 'ubuntu-restricted-extras'
-  options '--force-yes'
-  action :install
-end
-
 # Com o GNOME Tweak Tool você pode configurar o tema do
 # ambiente gráfico, e por consequência da distro em si. Você
 # pode alterar as configurações do Desktop, como ícones
@@ -69,22 +74,5 @@ end
 package 'Install: gnome-tweaks' do
   package_name 'gnome-tweaks'
   options '--force-yes'
-  action :install
-end
-
-# O Google Chrome é o navegador mais utilizado no Brasil e no
-# mundo atualmente, porém, só está disponível para distribuições
-# Linux de 64 bits.
-apt_repository 'Add: Google Chrome' do
-  arch node[:system][:google_chrome][:arch]
-  uri node[:system][:google_chrome][:uri]
-  key node[:system][:google_chrome][:key]
-  distribution 'stable'
-  components %w(main)
-  action :add
-end
-
-package 'Install: Google Chrome' do
-  package_name 'google-chrome-stable'
   action :install
 end
