@@ -1,14 +1,26 @@
 # ============================================================
 # UPDATE AND UPGRADE UBUNTU
 # ============================================================
+
+# ======================= Variables ==========================
+user_name = node[:preferences][:user]
+user_home = node[:system][:home]
+
+is_update = node[:preferences][:update]
+is_upgrade = node[:preferences][:upgrade]
+
+
+# ========================= Commads ========================== 
 execute 'Update: System' do
   command 'sudo apt update -y'
   action :run
+  only_if is_update
 end
 
 execute 'Upgrade: System' do
   command 'sudo apt upgrade -y'
   action :run
+  only_if is_upgrade
 end
 
 # This package enables the usage of 'deb https://foo distro
@@ -73,6 +85,42 @@ end
 # áreas de trabalho virtuais.
 package 'Install: gnome-tweaks' do
   package_name 'gnome-tweaks'
+  options '--force-yes'
+  action :install
+end
+
+original_bashrc_path = node[:system][:files][:original][:bashrc][:path]
+custom_bashrc_path = node[:system][:files][:custom][:bashrc][:path]
+
+# Customize .bashrc based on my custom .bashrc
+file original_bashrc_path do
+  content IO.read(custom_bashrc_path)
+  action :create
+end
+
+original_zshrc_path = node[:system][:files][:original][:zshrc][:path]
+custom_zshrc_path = node[:system][:files][:custom][:zshrc][:path]
+
+# Customize .zshrc based on my custom .zshrc
+file original_zshrc_path do
+  content IO.read(custom_zshrc_path)
+  action :create
+end
+
+# ============================================================
+# GNOME EXTENSIONS UBUNTU
+# ============================================================
+
+# Install Gnome shell host connector to Google Chrome
+package 'Install: chrome-gnome-shell' do
+  package_name 'chrome-gnome-shell'
+  options '--force-yes'
+  action :install
+end
+
+# Install Gnome shell extenstions of Ubuntu, as a package
+package 'Install: gnome-shell-extensions' do
+  package_name 'gnome-shell-extensions'
   options '--force-yes'
   action :install
 end
