@@ -7,6 +7,21 @@ default[:preferences][:user] = 'zamott'
 # ============================= SYSTEM ========================================
 default[:system][:home] = "/home/#{default[:system][:user]}"
 
+# Dconf
+default[:system][:screensaver][:color][:secondary] = ''
+default[:system][:screensaver][:path] = ''
+default[:system][:screensaver][:url] = ''
+
+# Gedit
+default[:system][:gedit][:bracket_matching] = true
+default[:system][:gedit][:hightlight_lines] = true
+default[:system][:gedit][:insert_spaces] = true
+default[:system][:gedit][:line_numbers] = true
+default[:system][:gedit][:right_margin] = true
+default[:system][:gedit][:auto_ident] = true
+default[:system][:gedit][:scheme] = 'tango'
+default[:system][:gedit][:tabs_size] = 2
+
 
 # ============================ UTILITIES ======================================
 # Google Chrome
