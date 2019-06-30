@@ -84,42 +84,36 @@ end
 execute 'Configure: buttons window\'s position' do
   command "gsettings set org.gnome.desktop.wm.preferences button-layout 'close,maximize,minimize:'"
   action :run
-  only_if 'which gsettings'
 end
 
 # Habilita a opção de luz noturna no sistema
 execute 'Configure: night light' do
   command 'gsettings set org.gnome.settings-daemon.plugins.color night-light-enabled true'
   action :run
-  only_if 'which gsettings'
 end
 
 # Habilita a opção de configuração automática do timezone
 execute 'Configure: automatic timezone' do
   command 'gsettings set org.gnome.desktop.datetime automatic-timezone true'
   action :run
-  only_if 'which gsettings'
 end
 
 # Habilita a opção para mostrar a data junto ao relógio
 execute 'Configure: show date in clock' do
   command 'gsettings set org.gnome.desktop.interface clock-show-date true'
   action :run
-  only_if 'which gsettings'
 end
 
 # Habilita a opção para mostrar o dia da semana junto ao relógio
 execute 'Configure: show weekday in clock' do
   command 'gsettings set org.gnome.desktop.interface clock-show-weekday true'
   action :run
-  only_if 'which gsettings'
 end
 
 # Habilita a opção para mostrar a porcentagem da bateria
 execute 'Configure: show percentage of battery' do
   command 'gsettings set org.gnome.desktop.interface show-battery-percentage true'
   action :run
-  only_if 'which gsettings'
 end
 
 # Alterar o método de clique no touchpad
@@ -127,53 +121,47 @@ end
 execute 'Configure: change method of click in touchpad' do
   command "gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'"
   action :run
-  only_if 'which gsettings'
 end
 
 # Habilita a opção desabilitar o touchpad enquanto digita
 execute 'Configure: disable touchpad while typing' do
   command "gsettings set org.gnome.desktop.peripherals.touchpad disable-while-typing true"
   action :run
-  only_if 'which gsettings'
 end
 
 # Altera o método de rolagem do touchpad
-# Opções: ['disabled', 'edge-scrollping', 'thow-fingers-scrolling']
+# Opções: ['disabled', 'edge-scrollping', 'two-finger-scrolling']
 execute 'Configure: disable touchpad while typing' do
-  command "gsettings set org.gnome.desktop.peripherals.touchpad scroll-method 'two-fingers-scrolling'"
+  command "gsettings set org.gnome.desktop.peripherals.touchpad scroll-method 'two-finger-scrolling'"
   action :run
-  only_if 'which gsettings'
 end
 
 image_screensaver_path = node[:system][:screensaver][:path]
 image_screensaver_url = node[:system][:screensaver][:url]
 
 # Faz o download da imagem do screensaver
-remote_file "#{Chef::Config[:file_cache_path]}/screensaver.png" do
+remote_file image_screensaver_path do
   source image_screensaver_url
 end
 
 # Altera a imagem do screensaver
 execute 'Configure: change screensaver' do
-  command "gsettings set org.gnome.desktop.screensaver.picture-uri '#{image_screensaver_path}'"
+  command "gsettings set org.gnome.desktop.screensaver picture-uri '#{image_screensaver_path}'"
   action :run
-  only_if 'which gsettings'
 end
 
 screensaver_secondary_color = node[:system][:screensaver][:color][:secondary]
 
 # Altera a cor secundária do screensaver
 execute 'Configure: change secondary color in screensaver' do
-  command "gsettings set org.gnome.desktop.screensaver.secondary-color '#{screensaver_secondary_color}'"
+  command "gsettings set org.gnome.desktop.screensaver secondary-color '#{screensaver_secondary_color}'"
   action :run
-  only_if 'which gsettings'
 end
 
 # Habilitar a busca de provedores externos
 execute 'Configure: search with external providers' do
-  command "gsettings set org.gnome.desktop.search-providers.disable-external false"
+  command "gsettings set org.gnome.desktop.search-providers disable-external false"
   action :run
-  only_if 'which gsettings'
 end
 
 is_gedit_bracket_matching = node[:system][:gedit][:bracket_matching]
@@ -181,57 +169,57 @@ is_gedit_highlight_line = node[:system][:gedit][:hightlight_lines]
 is_gedit_insert_spaces = node[:system][:gedit][:insert_spaces]
 is_gedit_line_numbers = node[:system][:gedit][:line_numbers]
 is_gedit_right_margin = node[:system][:gedit][:right_margin]
-is_gedit_auto_ident = node[:system][:gedit][:auto_ident]
+is_gedit_auto_indent = node[:system][:gedit][:auto_indent]
 
 gedit_tabs_size = node[:system][:gedit][:tabs_size]
 gedit_scheme = node[:system][:gedit][:scheme]
 
-execute 'Configure: auto-ident of gedit' do
-  command "gsettings set org.gnome.gedit.preferences.editor auto-ident #{is_gedit_auto_ident}"
+execute 'Configure: auto-indent of gedit' do
+  command "gsettings set org.gnome.gedit.preferences.editor auto-indent #{is_gedit_auto_indent}"
   action :run
-  only_if 'which gsettings'
+  only_if 'which gedit'
 end
 
 execute 'Configure: bracket-matching of gedit' do
   command "gsettings set org.gnome.gedit.preferences.editor bracket-matching #{is_gedit_bracket_matching}"
   action :run
-  only_if 'which gsettings'
+  only_if 'which gedit'
 end
 
 execute 'Configure: display-line-numbers of gedit' do
   command "gsettings set org.gnome.gedit.preferences.editor display-line-numbers #{is_gedit_line_numbers}"
   action :run
-  only_if 'which gsettings'
+  only_if 'which gedit'
 end
 
 execute 'Configure: display-right-margin of gedit' do
   command "gsettings set org.gnome.gedit.preferences.editor display-right-margin #{is_gedit_right_margin}"
   action :run
-  only_if 'which gsettings'
+  only_if 'which gedit'
 end
 
 execute 'Configure: highlight-current-line of gedit' do
   command "gsettings set org.gnome.gedit.preferences.editor highlight-current-line #{is_gedit_highlight_line}"
   action :run
-  only_if 'which gsettings'
+  only_if 'which gedit'
 end
 
 execute 'Configure: insert-spaces of gedit' do
   command "gsettings set org.gnome.gedit.preferences.editor insert-spaces #{is_gedit_insert_spaces}"
   action :run
-  only_if 'which gsettings'
+  only_if 'which gedit'
 end
 
 execute 'Configure: scheme of gedit' do
   command "gsettings set org.gnome.gedit.preferences.editor scheme #{gedit_scheme}"
   action :run
-  only_if 'which gsettings'
+  only_if 'which gedit'
 end
 
 execute 'Configure: tabs-size of gedit' do
   command "gsettings set org.gnome.gedit.preferences.editor tabs-size #{gedit_tabs_size}"
   action :run
-  only_if 'which gsettings'
+  only_if 'which gedit'
 end
 
 

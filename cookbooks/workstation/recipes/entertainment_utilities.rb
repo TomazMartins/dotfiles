@@ -2,8 +2,8 @@
 # INTERNET
 # ============================================================
 
-is_google_chrome_install = node[:preferences][:internet][:google_chrome][:install]
-is_fast_install = node[:preferences][:internet][:fast][:install]
+is_google_chrome_install = node[:utilities][:internet][:google_chrome][:install]
+is_fast_install = node[:utilities][:internet][:fast][:install]
 
 # O Google Chrome é o navegador mais utilizado no Brasil e no
 # mundo atualmente, porém, só está disponível para distribuições
@@ -16,7 +16,13 @@ apt_repository 'Add: Google Chrome' do
   components %w(main)
   action :add
 
-  only_if is_google_chrome_install
+  only_if { is_google_chrome_install }
+end
+
+execute 'Update: System' do
+  command 'sudo apt update -y'
+  action :run
+  only_if { is_google_chrome_install }
 end
 
 package 'Install: Google Chrome' do
@@ -24,22 +30,22 @@ package 'Install: Google Chrome' do
   options '--force-yes'
   action :install
 
-  only_if is_google_chrome_install
+  only_if { is_google_chrome_install }
 end
 
 # Test your internet download speed from terminal
 execute 'Install: fast' do
   command 'sudo snap install fast'
-  only_if is_fast_install
+  only_if { is_fast_install }
 end
 
 # ============================================================
 # MESSENGERS AND SOCIAL
 # ============================================================
 
-is_install_telegram = node[:preferences][:messengers_social][:telegram][:install]
-is_install_skype = node[:preferences][:messengers_social][:skype][:install]
-is_install_slack = node[:preferences][:messengers_social][:slack][:install]
+is_install_telegram = node[:utilities][:messengers_social][:telegram][:install]
+is_install_skype = node[:utilities][:messengers_social][:skype][:install]
+is_install_slack = node[:utilities][:messengers_social][:slack][:install]
 
 # Caution: Slack for Linux is in beta. We’re still busy adding
 # features and ironing out potential issues.
@@ -54,7 +60,7 @@ is_install_slack = node[:preferences][:messengers_social][:slack][:install]
 # desk or on the go.
 execute 'Install: Slack' do
   command 'sudo snap install slack --classic'
-  only_if is_install_slack
+  only_if { is_install_slack }
 end
 
 # Skype keeps the world talking. Say “hello” with an instant
@@ -62,7 +68,7 @@ end
 # on phones, tablets, PCs, Macs and Linux.
 execute 'Install: Skype' do
   command 'sudo snap install skype --classic'
-  only_if is_install_skype
+  only_if { is_install_skype }
 end
 
 # Pure instant messaging — simple, fast, secure, and synced across
@@ -70,7 +76,7 @@ end
 # half years.
 execute 'Install: Telegram' do
   command 'sudo snap install telegram-desktop'
-  only_if is_install_telegram
+  only_if { is_install_telegram }
 end
 
 
@@ -78,12 +84,12 @@ end
 # OFFICE
 # ============================================================
 
-is_remove_libre_office = node[:preferences][:office][:libre_office][:install]
+is_remove_libre_office = node[:utilities][:office][:libre_office][:install]
 
-is_install_gmail_desktop = node[:preferences][:office][:gmail_desktop][:install]
-is_install_only_office = node[:preferences][:office][:only_office][:install]
-is_install_csbooks = node[:preferences][:office][:csbooks][:install]
-is_install_buka = node[:preferences][:office][:buka][:install]
+is_install_gmail_desktop = node[:utilities][:office][:gmail_desktop][:install]
+is_install_only_office = node[:utilities][:office][:only_office][:install]
+is_install_csbooks = node[:utilities][:office][:csbooks][:install]
+is_install_buka = node[:utilities][:office][:buka][:install]
 
 # ONLYOFFICE Desktop Editors is a free open source office suite
 # that combines text, spreadsheet and presentation editors
@@ -97,12 +103,12 @@ execute 'Removes: libreoffice' do
     sudo apt-get clean
     sudo apt-get autoremove
   EOH
-  only_if is_remove_libre_office
+  only_if { is_remove_libre_office }
 end
 
 execute 'Install: only-office' do
   command 'sudo snap install onlyoffice-desktopeditors'
-  only_if is_install_only_office
+  only_if { is_install_only_office }
 end
 
 # Gmail Desktop is a cross-platform dedicated Gmail app written in
@@ -110,13 +116,13 @@ end
 # default mailto handling, and more!
 execute 'Install: Gmail Desktop' do
   command 'sudo snap install gmail-desktop'
-  only_if is_install_gmail_desktop
+  only_if { is_install_gmail_desktop }
 end
 
 # EBook Management
 execute 'Install: Buka' do
   command 'sudo snap install buka'
-  only_if is_install_buka
+  only_if { is_install_buka }
 end
 
 # csBooks is a smart solution to manage all your PDF, EPUB and
@@ -128,7 +134,7 @@ end
 # read status for them.
 execute 'Install: csBooks' do
   command 'sudo snap install csbooks'
-  only_if is_install_csbooks
+  only_if { is_install_csbooks }
 end
 
 
@@ -136,7 +142,7 @@ end
 # PERSONALISATION
 # ============================================================
 
-is_install_disk_space_saver = node[:preferences][:personalisation][:disk_space_saver][:install]
+is_install_disk_space_saver = node[:utilities][:personalisation][:disk_space_saver][:install]
 
 # Disk Space Saver is a disk space analyzer, that will help you
 # to find large space hogs on hard drive in seconds! And free
@@ -149,22 +155,22 @@ is_install_disk_space_saver = node[:preferences][:personalisation][:disk_space_s
 # & delete large files and folders in a simple click.
 execute 'Install: Disk Space Saver' do
   command 'sudo snap install disk-space-saver'
-  only_if is_install_disk_space_saver
+  only_if { is_install_disk_space_saver }
 end
 
 
 # ============================================================
 # EDUCATION
 # ============================================================
-is_install_kmplot = node[:preferences][:education][:kmplot][:install]
-is_install_step = node[:preferences][:education][:step][:install]
-is_install_truthtables = node[:preferences][:education][:truthtables][:install]
-is_install_atomify = node[:preferences][:education][:atomify][:install]
-is_install_qalculate = node[:preferences][:education][:qalculate][:install]
+is_install_kmplot = node[:utilities][:education][:kmplot][:install]
+is_install_step = node[:utilities][:education][:step][:install]
+is_install_truthtables = node[:utilities][:education][:truthtables][:install]
+is_install_atomify = node[:utilities][:education][:atomify][:install]
+is_install_qalculate = node[:utilities][:education][:qalculate][:install]
 
 execute 'Install: kmplot' do
   command 'sudo snap install kmplot'
-  only_if is_install_kmplot
+  only_if { is_install_kmplot }
 end
 
 # Step is an interactive physical simulator. It allows you to
@@ -178,13 +184,13 @@ end
 # learn but feel how physics works!
 execute 'Install: step' do
   command 'sudo snap install step'
-  only_if is_install_step
+  only_if { is_install_step }
 end
 
 # Generates truth tables. Allows 30 different variables.
 execute 'Install: truthtables' do
   command 'sudo snap install truthtables'
-  only_if is_install_truthtables
+  only_if { is_install_truthtables }
 end
 
 # Atomify LAMMPS is an easy-to-use visualizer and editor for the
@@ -196,7 +202,7 @@ end
 # is open source software written in C++ built on top of Qt.
 execute 'Install: atomify' do
   command 'sudo snap install atomify'
-  only_if is_install_atomify
+  only_if { is_install_atomify }
 end
 
 # Qalculate! is a multi-purpose cross-platform desktop calculator.
@@ -210,7 +216,7 @@ end
 # plotting, and a user-friendly interface.
 execute 'Install: qalculate' do
   command 'sudo snap install qalculate'
-  only_if is_install_qalculate
+  only_if { is_install_qalculate }
 end
 
 
@@ -218,32 +224,32 @@ end
 # PHOTO AND VIDEO
 # ============================================================
 
-is_install_inkscape = node[:preferences][:photo_video][:inkscape][:install]
-is_install_photoscape = node[:preferences][:photo_video][:photoscape][:install]
-is_install_electron_player = node[:preferences][:photo_video][:electron_player][:install]
-is_install_youtube_dl = node[:preferences][:photo_video][:youtube_dl][:install]
-is_install_gimp = node[:preferences][:photo_video][:gimp][:install]
+is_install_inkscape = node[:utilities][:photo_video][:inkscape][:install]
+is_install_photoscape = node[:utilities][:photo_video][:photoscape][:install]
+is_install_electron_player = node[:utilities][:photo_video][:electron_player][:install]
+is_install_youtube_dl = node[:utilities][:photo_video][:youtube_dl][:install]
+is_install_gimp = node[:utilities][:photo_video][:gimp][:install]
 
 # An Open Source vector graphics editor, with capabilities similar
 # to Illustrator, CorelDraw, or Xara X, using the W3C standard
 # Scalable Vector Graphics (SVG) file format.
 execute 'Install: inkscape' do
   command 'sudo snap install inkscape'
-  only_if is_install_inkscape
+  only_if { is_install_inkscape }
 end
 
 # PhotoScape is a fun and easy photo editing software that enables
 # you to fix and enhance photos.
 execute 'Install: photoscape' do
   command 'sudo snap install photoscape'
-  only_if is_install_photoscape
+  only_if { is_install_photoscape }
 end
 
 # An Electron Based Web Video Services Player. Supporting Netflix,
 # Youtube, Twitch, Floatplane And More.
 execute 'Install: electron-player' do
   command 'sudo snap install electronplayer'
-  only_if is_install_electron_player
+  only_if { is_install_electron_player }
 end
 
 # Is a command-line program to download videos from YouTube.com and
@@ -254,7 +260,7 @@ end
 # use it however you like.
 execute 'Install: youtube-dl' do
   command 'sudo snap install youtube-dl'
-  only_if is_install_youtube_dl
+  only_if { is_install_youtube_dl }
 end
 
 # Whether you are a graphic designer, photographer, illustrator, or
@@ -263,18 +269,18 @@ end
 # thanks to many customization options and 3rd party plugins.
 execute 'Install: gimp' do
   command 'sudo snap install gimp'
-  only_if is_install_gimp
+  only_if { is_install_gimp }
 end
 
 # ============================================================
 # MUSIC AND AUDIO
 # ============================================================
 
-is_install_spotify = node[:preferences][:music_audio][:spotify][:install]
-is_install_audacity = node[:preferences][:music_audio][:audacity][:install]
-is_install_musescore = node[:preferences][:music_audio][:musescore][:install]
-is_install_tuxguitar = node[:preferences][:music_audio][:tuxguitar][:install]
-is_install_deep_voice_recorder = node[:preferences][:music_audio][:deep_voice_recorder][:install]
+is_install_spotify = node[:utilities][:music_audio][:spotify][:install]
+is_install_audacity = node[:utilities][:music_audio][:audacity][:install]
+is_install_musescore = node[:utilities][:music_audio][:musescore][:install]
+is_install_tuxguitar = node[:utilities][:music_audio][:tuxguitar][:install]
+is_install_deep_voice_recorder = node[:utilities][:music_audio][:deep_voice_recorder][:install]
 
 # Stream the tracks you love instantly, browse the charts or
 # fire up readymade playlists in every genre and mood. Radio
@@ -283,7 +289,7 @@ is_install_deep_voice_recorder = node[:preferences][:music_audio][:deep_voice_re
 # just for you.
 execute 'Install: spotify' do
   command 'sudo snap install spotify'
-  only_if is_install_spotify
+  only_if { is_install_spotify }
 end
 
 # Audacity is a free, easy-to-use, multi-track audio editor and
@@ -291,7 +297,7 @@ end
 # systems. The interface is translated into many languages.
 execute 'Install: audacity' do
   command 'sudo snap install audacity'
-  only_if is_install_audacity
+  only_if { is_install_audacity }
 end
 
 # MuseScore is the world's leading free and open-source software
@@ -300,7 +306,7 @@ end
 # Linux.
 execute 'Install: musescore' do
   command 'sudo snap install musescore'
-  only_if is_install_musescore
+  only_if { is_install_musescore }
 end
 
 # TuxGuitar is a free, open source tablature editor, which includes
@@ -308,12 +314,12 @@ end
 # export of Guitar Pro gp3, gp4, and gp5 files
 execute 'Install: tuxguitar' do
   command 'sudo snap install tuxguitar-vs'
-  only_if is_install_tuxguitar
+  only_if { is_install_tuxguitar }
 end
 
 # This is deepin-voice-recorder snap application. It can be used to
 # record and play voice files.
 execute 'Install: deep-voice-recorder' do
   command 'sudo snap install deepin-voice-recorder'
-  only_if is_install_deep_voice_recorder
+  only_if { is_install_deep_voice_recorder }
 end
