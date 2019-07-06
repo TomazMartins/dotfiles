@@ -1,19 +1,19 @@
-# =========================== PREFERENCES =====================================
+# =========================== personal =====================================
 # General
-default[:preferences][:upgrade] = false
-default[:preferences][:update] = false
+default[:personal][:upgrade] = false
+default[:personal][:update] = false
 
-default[:preferences][:user][:email] = 'tomaz.r.martins@gmail.com'
-default[:preferences][:user][:name] = 'vagrant'
+default[:personal][:user][:email] = 'tomaz.r.martins@gmail.com'
+default[:personal][:user][:name] = 'vagrant'
 
 
 # ============================= SYSTEM ========================================
-default[:system][:home] = "/home/#{default[:preferences][:user][:name]}"
+default[:system][:home] = "/home/#{default[:personal][:user][:name]}"
 
 # Screensaver
-default[:system][:screensaver][:color][:secondary] = '#0000B7'
-default[:system][:screensaver][:path] = "#{Chef::Config[:file_cache_path]}/screensaver.png"
 default[:system][:screensaver][:url] = 'https://drive.google.com/uc?authuser=0&id=14PPdI-QWIB0Z6otAI_XpfjCOFT4OqKyX&export=download'
+default[:system][:screensaver][:path] = "#{Chef::Config[:file_cache_path]}/screensaver.png"
+default[:system][:screensaver][:color][:secondary] = '#0000B7'
 
 # Gedit
 default[:system][:gedit][:bracket_matching] = true
@@ -73,6 +73,30 @@ default[:utilities][:music_audio][:audacity][:install] = true
 default[:utilities][:music_audio][:musescore][:install] = true
 default[:utilities][:music_audio][:tuxguitar][:install] = true
 default[:utilities][:music_audio][:deep_voice_recorder][:install] = true
+
+
+# ========================== DEVELOPEMNT ======================================
+# -------------------------- VIRTUALIZATION -----------------------------------
+# Virtual Box
+default[:development][:virtualization][:virtual_box][:version] = '6.0.8'
+VITURAL_BOX_VERSION = node[:development][:virtualization][:virtual_box][:version]
+
+default[:development][:virtualization][:virtual_box][:ubuntu][:package][:name] = "virtualbox-6.0_#{VITURAL_BOX_VERSION}-130520~Ubuntu~bionic_amd64.deb"
+default[:development][:virtualization][:virtual_box][:ubuntu][:package][:url] = "https://download.virtualbox.org/virtualbox/#{VITURAL_BOX_VERSION}/virtualbox-6.0_#{VITURAL_BOX_VERSION}-130520~Ubuntu~bionic_amd64.deb"
+
+# Vagrant
+default[:development][:virtualization][:vagrant][:version] = '2.2.4'
+VAGRANT_VERSION = node[:virtualization][:vagrant][:version]
+
+default[:development][:virtualization][:vagrant][:ubuntu][:package][:name] = ''
+default[:development][:virtualization][:vagrant][:ubuntu][:package][:url] = "https://releases.hashicorp.com/vagrant/#{VAGRANT_VERSION}/vagrant_#{VAGRANT_VERSION}_x86_64.deb"
+
+# Docker
+default[:development][:virtualization][:docker][:url] = 'https://download.docker.com/linux/ubuntu'
+
+# Docker Compose
+default[:development][:virtualization][:docker][:compose][:version] = '1.23.1'
+default[:development][:virtualization][:docker][:compose][:path] = '/usr/local/bin/docker-compose'
 
 
 # ============================== FILES ========================================

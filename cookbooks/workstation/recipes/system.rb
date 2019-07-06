@@ -2,11 +2,11 @@
 # UPDATE AND UPGRADE UBUNTU
 # ============================================================
 
-user_name = node[:preferences][:user][:name]
+user_name = node[:personal][:user][:name]
 user_home = node[:system][:home]
 
-is_update = node[:preferences][:update]
-is_upgrade = node[:preferences][:upgrade]
+is_update = node[:personal][:update]
+is_upgrade = node[:personal][:upgrade]
 
 execute 'Update: System' do
   command 'sudo apt update -y'
