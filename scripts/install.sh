@@ -7,14 +7,7 @@ source $BASEDIR/colors.sh
 
 # ==================== VARIABLES ====================
 CHEFDK_NAME="chefdk_3.8.14-1_amd64.deb"
-
 CHEFDK_PKG_UBUNTU_18="https://packages.chef.io/files/stable/chefdk/3.8.14/ubuntu/18.04/${CHEFDK_NAME}"
-CHEFDK_PKG_UBUNTU_16="https://packages.chef.io/files/stable/chefdk/3.8.14/ubuntu/16.04/${CHEFDK_NAME}"
-CHEFDK_PKG_UBUNTU_14="https://packages.chef.io/files/stable/chefdk/3.8.14/ubuntu/14.04/${CHEFDK_NAME}"
-
-SHA256_UBUNTU_18="83b96eb28891d3f89d58c3ffefa61c0d8aa605911c3b90d8c5cb92a75602e56d"
-SHA256_UBUNTU_16="83b96eb28891d3f89d58c3ffefa61c0d8aa605911c3b90d8c5cb92a75602e56d"
-SHA256_UBUNTU_14="83b96eb28891d3f89d58c3ffefa61c0d8aa605911c3b90d8c5cb92a75602e56d"
 
 
 # ==================== MAIN COMMANDS ====================

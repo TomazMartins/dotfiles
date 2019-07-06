@@ -17,6 +17,12 @@
 # =============================================================================
 # DATABASES
 # =============================================================================
+postgres_version = node[:development][:databases][:postgres][:version]
+
+execute "Install: Postgres #{postgres_version}" do
+  command 'sudo snap install postgresql10'
+  action :run
+end
 
 # =============================================================================
 # VIRTUALIZATION

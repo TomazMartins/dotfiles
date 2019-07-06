@@ -76,6 +76,11 @@ default[:utilities][:music_audio][:deep_voice_recorder][:install] = true
 
 
 # ========================== DEVELOPEMNT ======================================
+# ---------------------------- DATABASES --------------------------------------
+# Postgres
+default[:development][:databases][:postgres][:version] = '10.4'
+
+
 # -------------------------- VIRTUALIZATION -----------------------------------
 # Virtual Box
 default[:development][:virtualization][:virtual_box][:version] = '6.0.8'
@@ -86,12 +91,13 @@ default[:development][:virtualization][:virtual_box][:ubuntu][:package][:url] = 
 
 # Vagrant
 default[:development][:virtualization][:vagrant][:version] = '2.2.4'
-VAGRANT_VERSION = node[:virtualization][:vagrant][:version]
+VAGRANT_VERSION = node[:development][:virtualization][:vagrant][:version]
 
-default[:development][:virtualization][:vagrant][:ubuntu][:package][:name] = ''
+default[:development][:virtualization][:vagrant][:ubuntu][:package][:name] = "vagrant_#{VAGRANT_VERSION}_x86_64.deb"
 default[:development][:virtualization][:vagrant][:ubuntu][:package][:url] = "https://releases.hashicorp.com/vagrant/#{VAGRANT_VERSION}/vagrant_#{VAGRANT_VERSION}_x86_64.deb"
 
 # Docker
+default[:development][:virtualization][:ubuntu][:version] = 'bionic'
 default[:development][:virtualization][:docker][:url] = 'https://download.docker.com/linux/ubuntu'
 
 # Docker Compose
