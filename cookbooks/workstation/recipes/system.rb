@@ -43,6 +43,14 @@ package 'Install: Third Codes' do
   action :install
 end
 
+package 'Install: snap' do
+  package_name 'snapd'
+  options '--force-yes'
+  action :install
+
+  not_if 'which snap'
+end
+
 
 # ============================================================
 # CUSTOMIZE UBUNTU

@@ -1,10 +1,19 @@
-# =========================== personal =====================================
+# =========================== PERSONAL =====================================
 # General
 default[:personal][:upgrade] = false
 default[:personal][:update] = false
 
 default[:personal][:user][:email] = 'tomaz.r.martins@gmail.com'
 default[:personal][:user][:name] = 'vagrant'
+
+
+# ============================= DEVELOPMENT ===================================
+default[:development][:android][:install] = true
+default[:development][:java][:install] = true
+default[:development][:cpp][:install] = true
+
+default[:development][:java][:repository][:ppa] = 'ppa:linuxuprising/java'
+default[:development][:java][:version] = 11
 
 
 # ============================= SYSTEM ========================================
@@ -79,6 +88,7 @@ default[:utilities][:music_audio][:deep_voice_recorder][:install] = true
 # ---------------------------- DATABASES --------------------------------------
 # Postgres
 default[:development][:databases][:postgres][:version] = '10.4'
+default[:development][:databases][:postgres][:install] = true
 
 
 # -------------------------- VIRTUALIZATION -----------------------------------
@@ -89,6 +99,8 @@ VITURAL_BOX_VERSION = node[:development][:virtualization][:virtual_box][:version
 default[:development][:virtualization][:virtual_box][:ubuntu][:package][:name] = "virtualbox-6.0_#{VITURAL_BOX_VERSION}-130520~Ubuntu~bionic_amd64.deb"
 default[:development][:virtualization][:virtual_box][:ubuntu][:package][:url] = "https://download.virtualbox.org/virtualbox/#{VITURAL_BOX_VERSION}/virtualbox-6.0_#{VITURAL_BOX_VERSION}-130520~Ubuntu~bionic_amd64.deb"
 
+default[:development][:databases][:virtual_box][:install] = true
+
 # Vagrant
 default[:development][:virtualization][:vagrant][:version] = '2.2.4'
 VAGRANT_VERSION = node[:development][:virtualization][:vagrant][:version]
@@ -96,13 +108,19 @@ VAGRANT_VERSION = node[:development][:virtualization][:vagrant][:version]
 default[:development][:virtualization][:vagrant][:ubuntu][:package][:name] = "vagrant_#{VAGRANT_VERSION}_x86_64.deb"
 default[:development][:virtualization][:vagrant][:ubuntu][:package][:url] = "https://releases.hashicorp.com/vagrant/#{VAGRANT_VERSION}/vagrant_#{VAGRANT_VERSION}_x86_64.deb"
 
+default[:development][:databases][:vagrant][:install] = true
+
 # Docker
 default[:development][:virtualization][:ubuntu][:version] = 'bionic'
 default[:development][:virtualization][:docker][:url] = 'https://download.docker.com/linux/ubuntu'
 
+default[:development][:databases][:docker][:install] = true
+
 # Docker Compose
 default[:development][:virtualization][:docker][:compose][:version] = '1.23.1'
 default[:development][:virtualization][:docker][:compose][:path] = '/usr/local/bin/docker-compose'
+
+default[:development][:databases][:docker_compose][:install] = true
 
 
 # ============================== FILES ========================================
