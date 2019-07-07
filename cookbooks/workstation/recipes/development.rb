@@ -1,6 +1,54 @@
 # =============================================================================
 # RUBY
 # =============================================================================
+keyserver = node[:development][:rvm][:keyserver]
+recv_keys = node[:development][:rvm][:recv_keys]
+username = node[:personal][:user][:name]
+home = node[:system][:home]
+
+is_install_rvm = node[:development][:rvm][:install]
+
+group 'rvm' do
+  members [username, 'root']
+  append true
+end
+
+execute 'Add: Public Key' do
+  command "gpg --keyserver #{keyserver} --recv-keys #{recv_keys}"
+  environment 'USER' => username, 'HOME' => home
+  user username
+  group 'rvm'
+  retries 3
+  cwd home
+
+  not_if 'which rvm'
+end
+
+execute 'Install: rvm' do
+  command '\curl -sSL https://get.rvm.io | bash -s stable'
+  cwd home
+  environment 'USER' => username, 'HOME' => home
+  group 'rvm'
+  user username
+  not_if 'which rvm'
+end
+
+bash 'Adds: rvm command' do
+  user 'root'
+  cwd home
+
+  code <<-EOH
+    if [ $(which zsh) ]
+    then
+      source ~/.zshrc
+      echo 'zsh sourced'
+    else
+      source ~/.bashrc
+      echo 'bash sourced'
+    fi
+  EOH
+end
+
 
 # =============================================================================
 # JAVA
@@ -22,11 +70,7 @@ group 'java' do
 end
 
 execute 'Remove: OpenJDK' do
-  command "bash -l -c 'sudo apt-get remove --purge openjdk-*'"
-  environment 'USER' => user_name, 'HOME' => user_home
-  user user_name
-  cwd user_home
-  group 'java'
+  command 'sudo apt-get remove --purge openjdk-*'
 
   only_if { is_install_java }
 end
@@ -54,7 +98,7 @@ execute 'Add: Allow Acceptance Java License' do
   only_if { is_install_java }
 end
 
-apt_package 'Install: Java' do
+package 'Install: Java' do
   package_name "oracle-java#{java_version}-installer"
   options '--force-yes'
   
@@ -69,7 +113,7 @@ end
 is_install_android = node[:development][:android][:install]
 
 execute 'Install: android studio' do
-  command 'udo snap install android-studio --classic'
+  command 'sudo snap install android-studio --classic'
   action :run
 
   only_if { is_install_java && is_install_android }
@@ -85,7 +129,6 @@ execute 'Install: dependencies' do
   command <<-EOH
     sudo apt-get install -y software-properties-common
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    sudo apt-get install -y software-properties-common python-software-properties
   EOH
   action :run
 
