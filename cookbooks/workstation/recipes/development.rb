@@ -7,8 +7,8 @@
 # =============================================================================
 is_install_java = node[:development][:java][:install]
 
-java_repository = node[:java][:repository][:ppa]
-java_version = node[:java][:version]
+java_repository = node[:development][:java][:repository][:ppa]
+java_version = node[:development][:java][:version]
 
 user_name = node[:personal][:user][:name]
 user_home = node[:system][:home]
@@ -82,7 +82,7 @@ end
 is_install_cpp = node[:development][:cpp][:install]
 
 execute 'Install: dependencies' do
-  code <<-EOH
+  command <<-EOH
     sudo apt-get install -y software-properties-common
     sudo add-apt-repository ppa:ubuntu-toolchain-r/test
     sudo apt-get install -y software-properties-common python-software-properties
@@ -94,7 +94,7 @@ end
 
 
 execute 'Update: System' do
-  code 'sudo apt update'
+  command 'sudo apt update'
   action :run
 
   only_if { is_install_cpp }
@@ -102,7 +102,7 @@ end
 
 
 execute 'Install: g++-7' do
-  code 'sudo apt install g++-7 -y'
+  command 'sudo apt install g++-7 -y'
   action :run
 
   only_if { is_install_cpp }
@@ -110,7 +110,7 @@ end
 
 
 execute 'Setup: g++-7' do
-  code <<-EOH
+  command <<-EOH
     sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 60 \
                         --slave /usr/bin/g++ g++ /usr/bin/g++-7 \
                         --slave /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-7 \

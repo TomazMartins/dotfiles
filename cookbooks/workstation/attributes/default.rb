@@ -4,7 +4,7 @@ default[:personal][:upgrade] = false
 default[:personal][:update] = false
 
 default[:personal][:user][:email] = 'tomaz.r.martins@gmail.com'
-default[:personal][:user][:name] = 'vagrant'
+default[:personal][:user][:name] = 'zamott'
 
 
 # ============================= DEVELOPMENT ===================================
@@ -120,14 +120,14 @@ default[:development][:databases][:docker][:install] = true
 default[:development][:virtualization][:docker][:compose][:version] = '1.23.1'
 default[:development][:virtualization][:docker][:compose][:path] = '/usr/local/bin/docker-compose'
 
-default[:development][:databases][:docker_compose][:install] = true
+default[:development][:virtualization][:docker_compose][:install] = true
 
 
 # ============================== FILES ========================================
 # .Bashrc
-default[:system][:files][:custom][:bashrc][:path] = "#{default[:system][:home]}/files/.bashrc"
+default[:system][:files][:custom][:bashrc][:path] = "#{default[:system][:home]}/git/dotfiles/files/.bashrc"
 default[:system][:files][:original][:bashrc][:path] = "#{default[:system][:home]}/.bashrc"
 
 # .Zshrc
-default[:system][:files][:custom][:zshrc][:path] = "#{default[:system][:home]}/files/.zshrc"
+default[:system][:files][:custom][:zshrc][:path] = "#{default[:system][:home]}/git/dotfiles/files/.zshrc"
 default[:system][:files][:original][:zshrc][:path] = "#{default[:system][:home]}/.zshrc"
