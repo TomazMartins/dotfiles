@@ -8,35 +8,21 @@ home = node[:system][:home]
 
 is_install_rvm = node[:development][:rvm][:install]
 
-group 'rvm' do
-  members [username, 'root']
-  append true
-end
-
 execute 'Add: Public Key' do
   command "gpg --keyserver #{keyserver} --recv-keys #{recv_keys}"
   environment 'USER' => username, 'HOME' => home
-  user username
-  group 'rvm'
   retries 3
-  cwd home
 
   not_if 'which rvm'
 end
 
 execute 'Install: rvm' do
   command '\curl -sSL https://get.rvm.io | bash -s stable'
-  cwd home
   environment 'USER' => username, 'HOME' => home
-  group 'rvm'
-  user username
   not_if 'which rvm'
 end
 
 bash 'Adds: rvm command' do
-  user 'root'
-  cwd home
-
   code <<-EOH
     if [ $(which zsh) ]
     then

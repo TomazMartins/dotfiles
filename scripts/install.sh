@@ -38,8 +38,8 @@ chef --version
 
 
 # ===== REMOVE AFTER TESTS =====
-cp -rf /vagrant/cookbooks ./
-cp -rf /vagrant/client.rb ./
+# cp -rf /vagrant/cookbooks ./
+# cp -rf /vagrant/client.rb ./
 
 
 # Install Workstation with Chef!

@@ -48,45 +48,45 @@ default[:utilities][:google_chrome][:arch] = 'amd64'
 
 # --------------------------- TO INSTALL? -------------------------------------
 # Internet
-default[:utilities][:internet][:google_chrome][:install] = false
+default[:utilities][:internet][:google_chrome][:install] = true
 default[:utilities][:internet][:fast][:install] = true
 
 # Messengers and social
-default[:utilities][:messengers_social][:telegram][:install] = true
-default[:utilities][:messengers_social][:skype][:install] = true
-default[:utilities][:messengers_social][:slack][:install] = true
+default[:utilities][:messengers_social][:telegram][:install] = false
+default[:utilities][:messengers_social][:skype][:install] = false
+default[:utilities][:messengers_social][:slack][:install] = false
 
 # Office
-default[:utilities][:office][:libre_office][:install] = true
+default[:utilities][:office][:libre_office][:install] = false
 
-default[:utilities][:office][:gmail_desktop][:install] = true
-default[:utilities][:office][:only_office][:install] = true
-default[:utilities][:office][:csbooks][:install] = true
-default[:utilities][:office][:buka][:install] = true
+default[:utilities][:office][:gmail_desktop][:install] = false
+default[:utilities][:office][:only_office][:install] = false
+default[:utilities][:office][:csbooks][:install] = false
+default[:utilities][:office][:buka][:install] = false
 
 # Personalisation
-default[:utilities][:personalisation][:disk_space_saver][:install] = true
+default[:utilities][:personalisation][:disk_space_saver][:install] = false
 
 # Education
-default[:utilities][:education][:kmplot][:install] = true
-default[:utilities][:education][:step][:install] = true
-default[:utilities][:education][:truthtables][:install] = true
-default[:utilities][:education][:atomify][:install] = true
-default[:utilities][:education][:qalculate][:install] = true
+default[:utilities][:education][:kmplot][:install] = false
+default[:utilities][:education][:step][:install] = false
+default[:utilities][:education][:truthtables][:install] = false
+default[:utilities][:education][:atomify][:install] = false
+default[:utilities][:education][:qalculate][:install] = false
 
 # Photo and video
-default[:utilities][:photo_video][:inkscape][:install] = true
-default[:utilities][:photo_video][:photoscape][:install] = true
-default[:utilities][:photo_video][:electron_player][:install] = true
-default[:utilities][:photo_video][:youtube_dl][:install] = true
-default[:utilities][:photo_video][:gimp][:install] = true
+default[:utilities][:photo_video][:inkscape][:install] = false
+default[:utilities][:photo_video][:photoscape][:install] = false
+default[:utilities][:photo_video][:electron_player][:install] = false
+default[:utilities][:photo_video][:youtube_dl][:install] = false
+default[:utilities][:photo_video][:gimp][:install] = false
 
 # Music and audio
-default[:utilities][:music_audio][:spotify][:install] = true
-default[:utilities][:music_audio][:audacity][:install] = true
-default[:utilities][:music_audio][:musescore][:install] = true
-default[:utilities][:music_audio][:tuxguitar][:install] = true
-default[:utilities][:music_audio][:deep_voice_recorder][:install] = true
+default[:utilities][:music_audio][:spotify][:install] = false
+default[:utilities][:music_audio][:audacity][:install] = false
+default[:utilities][:music_audio][:musescore][:install] = false
+default[:utilities][:music_audio][:tuxguitar][:install] = false
+default[:utilities][:music_audio][:deep_voice_recorder][:install] = false
 
 
 # ========================== DEVELOPEMNT ======================================
