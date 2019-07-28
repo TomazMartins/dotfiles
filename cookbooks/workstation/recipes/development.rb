@@ -339,6 +339,8 @@ execute 'Install: VSCode Extensions' do
     code --install-extensions yzane.markdown-pdf
     code --install-extensions bierner.markdown-preview-github-styles
     code --install-extensions rid9.datetime
+    code --install-extensions shyykoserhiy.vscode-spotify
+    code --install-extensions naumovs.color-highlight
   EOH
 end
 
