@@ -8,9 +8,12 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 #                                     PLUGINS
 # ===================================================================================
 plugins=(
-  git
-  rails
+  zsh-syntax-highlighting
+  git-extras
+  vagrant
+  docker
   ruby
+  git
 )
 
 
@@ -113,6 +116,6 @@ function makezip()
 # ===================================================================================
 #                                 VARIABLES AND PATH
 # ===================================================================================
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
 
 source $ZSH/oh-my-zsh.sh

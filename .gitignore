@@ -25,3 +25,6 @@ cookbooks/*/.kitchen.local.yml
 cookbooks/*/Berksfile.lock
 cookbooks/*/.zero-knife.rb
 cookbooks/*/Policyfile.lock.json
+
+# Custom
+.next

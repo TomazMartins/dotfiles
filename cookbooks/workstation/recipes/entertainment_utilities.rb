@@ -132,9 +132,15 @@ execute 'Install: csBooks' do
   only_if { is_install_csbooks }
 end
 
+# A dedicated desktop application for Overleaf, the online LaTeX editor.
+# Written in electron and built in electron-builder.
+execute 'Install: overleaf LaTex' do
+  command 'sudo snap install overleaf'
+end
+
 
 # ============================================================
-# PERSONALISATION
+# PERSONALIZATION
 # ============================================================
 
 is_install_disk_space_saver = node[:utilities][:personalisation][:disk_space_saver][:install]
