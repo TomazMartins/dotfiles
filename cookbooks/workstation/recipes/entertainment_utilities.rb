@@ -12,18 +12,13 @@ apt_repository 'Add: Google Chrome' do
   arch node[:utilities][:google_chrome][:arch]
   uri node[:utilities][:google_chrome][:uri]
   key node[:utilities][:google_chrome][:key]
+  repo_name 'google-chrome-stable'
   distribution 'stable'
   components %w(main)
   action :add
 
   only_if { is_google_chrome_install }
-end
-
-execute 'Update: System' do
-  command 'sudo apt update -y'
-  action :run
-  only_if { is_google_chrome_install }
-end
+end.run_action(:add)
 
 package 'Install: Google Chrome' do
   package_name 'google-chrome-stable'
@@ -31,7 +26,7 @@ package 'Install: Google Chrome' do
   action :install
 
   only_if { is_google_chrome_install }
-end
+end.run_action(:install)
 
 # Test your internet download speed from terminal
 execute 'Install: fast' do

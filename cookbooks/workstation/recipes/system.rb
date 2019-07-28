@@ -11,13 +11,13 @@ is_upgrade = node[:personal][:upgrade]
 execute 'Update: System' do
   command 'sudo apt update -y'
   action :run
-  only_if is_update
+  only_if { is_update }
 end
 
 execute 'Upgrade: System' do
   command 'sudo apt upgrade -y'
   action :run
-  only_if is_upgrade
+  only_if { is_upgrade }
 end
 
 # This package enables the usage of 'deb https://foo distro
