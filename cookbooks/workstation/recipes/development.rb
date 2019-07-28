@@ -325,3 +325,33 @@ end
 # =============================================================================
 # EDITORS
 # =============================================================================
+# Visual Code Studio
+execute 'Install: VSCode' do
+  command 'sudo snap install code --classic'
+end
+
+execute 'Install: VSCode Extensions' do
+  command <<-EOH
+    code --install-extensions ms-vscode.atom-keybindings
+    code --install-extensions ms-azuretools.vscode-docker
+    code --install-extensions dbaeumer.vscode-eslint
+    code --install-extensions ms-vsliveshare.vsliveshare
+    code --install-extensions yzane.markdown-pdf
+    code --install-extensions bierner.markdown-preview-github-styles
+    code --install-extensions rid9.datetime
+  EOH
+end
+
+original_vscode_settings_path = node[:development][:files][:original][:vscode_settings][:path]
+custom_vscode_settings_path = node[:development][:files][:custom][:vscode_settings][:path]
+
+# Customize .vscode_settings based on my custom .vscode_settings
+file original_vscode_settings_path do
+  content IO.read(custom_vscode_settings_path)
+  action :create
+end
+
+# Eclipse
+execute 'Install: Eclipse' do
+  command 'sudo snap install eclipse --classic'
+end

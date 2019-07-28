@@ -20,6 +20,9 @@ default[:development][:java][:version] = 12
 default[:development][:rvm][:recv_keys] = '409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB'
 default[:development][:rvm][:keyserver] = 'hkp://pool.sks-keyservers.net'
 
+default[:development][:files][:original][:vscode_settings][:path] = "#{default[:system][:home]}/git/dotfiles/files/settings.json"
+default[:development][:files][:custom][:vscode_settings][:path] = "#{default[:system][:home]}/.config/Code/User/settings.json"
+
 
 # ============================= SYSTEM ========================================
 default[:system][:home] = "/home/#{default[:personal][:user][:name]}"
