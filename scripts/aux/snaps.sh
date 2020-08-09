@@ -47,7 +47,7 @@ function install_snap() {
   which $application >> /dev/null 2>&1
 
   if [ ${?} -ne 0 ]; then
-    sudo snap install $application >> /dev/null 2>&1
+    snap install $application >> /dev/null 2>&1
     which $application >> /dev/null 2>&1
 
     if [ ${?} -eq 0 ]; then
@@ -55,7 +55,7 @@ function install_snap() {
     else
       message_warning $application
 
-      sudo snap install $application --classic >> /dev/null 2>&1
+      snap install $application --classic >> /dev/null 2>&1
       which $application >> /dev/null 2>&1
 
       if [ ${?} -eq 0 ]; then

@@ -38,7 +38,7 @@ function install_apt() {
   which $application >> /dev/null 2>&1
 
   if [ ${?} -ne 0 ]; then
-    sudo apt install -y $application >> /dev/null 2>&1
+    apt install -y $application >> /dev/null 2>&1
     which $application >> /dev/null 2>&1
 
     if [ ${?} -eq 0 ]; then
