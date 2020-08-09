@@ -1,0 +1,272 @@
+{
+    "atomKeymap.promptV3Features": true,
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.formatOnPaste": true,
+    "editor.lineHeight": 17,
+    "editor.fontFamily": "'ubuntu monospace', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "all",
+    "editor.fontSize": 12,
+    "editor.rulers": [
+        80
+    ],
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "Monokai Low Contrast",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "name": "comments",
+                "scope": "comment",
+                "settings": {
+                    "foreground": "#00CC00"
+                }
+            },
+            {
+                "name": "String",
+                "scope": "string",
+                "settings": {
+                    "foreground": "#2F9D66"
+                }
+            },
+            {
+                "name": "Number",
+                "scope": "constant.numeric",
+                "settings": {
+                    "foreground": "#FF0000"
+                }
+            },
+            {
+                "name": "Built-in constant",
+                "scope": "constant.language",
+                "settings": {
+                    "foreground": "#2277FF",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "name": "User-defined constant",
+                "scope": [
+                    "constant.character",
+                    "constant.other"
+                ],
+                "settings": {
+                    "foreground": "#0A87C6"
+                }
+            },
+            {
+                "name": "Variable",
+                "scope": "variable",
+                "settings": {
+                    "foreground": "#FFFFFF"
+                }
+            },
+            {
+                "name": "Keyword",
+                "scope": "keyword",
+                "settings": {
+                    "foreground": "#065196",
+                    "fontStyle": "bold"
+                }
+            },
+            {
+                "name": "Storage",
+                "scope": "storage",
+                "settings": {
+                    "fontStyle": "",
+                    "foreground": "#225588"
+                }
+            },
+            {
+                "name": "Storage type",
+                "scope": "storage.type",
+                "settings": {
+                    "fontStyle": "italic",
+                    "foreground": "#9966b8"
+                }
+            },
+            {
+                "name": "Class name",
+                "scope": [
+                    "entity.name.class",
+                    "entity.name.type"
+                ],
+                "settings": {
+                    "fontStyle": "bold",
+                    "foreground": "#CCCC00"
+                }
+            },
+            {
+                "name": "Inherited class",
+                "scope": "entity.other.inherited-class",
+                "settings": {
+                    "foreground": "#CCCC00"
+                }
+            },
+            {
+                "name": "Function name",
+                "scope": "entity.name.function",
+                "settings": {
+                    "fontStyle": "bold",
+                    "foreground": "#CCCC00"
+                }
+            },
+            {
+                "name": "Function argument",
+                "scope": "variable.parameter",
+                "settings": {
+                    "fontStyle": "italic",
+                    "foreground": "#2277ff"
+                }
+            },
+            {
+                "name": "Tag name",
+                "scope": "entity.name.tag",
+                "settings": {
+                    "fontStyle": "",
+                    "foreground": "#225588"
+                }
+            },
+            {
+                "name": "Tag attribute",
+                "scope": "entity.other.attribute-name",
+                "settings": {
+                    "fontStyle": "",
+                    "foreground": "#ddbb88"
+                }
+            },
+            {
+                "name": "Library function",
+                "scope": "support.function",
+                "settings": {
+                    "foreground": "#E0E066",
+                    "fontStyle": "italic underline",
+                }
+            },
+            {
+                "name": "Library constant",
+                "scope": "support.constant",
+                "settings": {
+                    "fontStyle": "italic underline",
+                    "foreground": "#E0E066"
+                }
+            },
+            {
+                "name": "Library class/type",
+                "scope": [
+                    "support.type",
+                    "support.class"
+                ],
+                "settings": {
+                    "fontStyle": "italic",
+                    "foreground": "#9966b8"
+                }
+            },
+            {
+                "name": "Library variable",
+                "scope": "support.other.variable",
+                "settings": {
+                    "fontStyle": ""
+                }
+            },
+            {
+                "name": "Invalid",
+                "scope": "invalid",
+                "settings": {
+                    "fontStyle": "",
+                    "foreground": "#F8F8F0"
+                }
+            },
+            {
+                "name": "Invalid deprecated",
+                "scope": "invalid.deprecated",
+                "settings": {
+                    "foreground": "#F8F8F0"
+                }
+            },
+            {
+                "name": "diff: header",
+                "scope": [
+                    "meta.diff",
+                    "meta.diff.header"
+                ],
+                "settings": {
+                    "fontStyle": "italic",
+                    "foreground": "#E0EDDD"
+                }
+            },
+            {
+                "name": "diff: deleted",
+                "scope": "markup.deleted",
+                "settings": {
+                    "fontStyle": "",
+                    "foreground": "#dc322f"
+                }
+            },
+            {
+                "name": "diff: changed",
+                "scope": "markup.changed",
+                "settings": {
+                    "fontStyle": "",
+                    "foreground": "#cb4b16"
+                }
+            },
+            {
+                "name": "diff: inserted",
+                "scope": "markup.inserted",
+                "settings": {
+                    "foreground": "#219186"
+                }
+            },
+            {
+                "name": "Markup Quote",
+                "scope": "markup.quote",
+                "settings": {
+                    "foreground": "#22aa44"
+                }
+            },
+            {
+                "name": "Markup Styling",
+                "scope": [
+                    "markup.bold",
+                    "markup.italic"
+                ],
+                "settings": {
+                    "foreground": "#22aa44"
+                }
+            },
+            {
+                "name": "Markup Inline",
+                "scope": "markup.inline.raw",
+                "settings": {
+                    "fontStyle": "",
+                    "foreground": "#9966b8"
+                }
+            },
+            {
+                "name": "Markup Setext Header",
+                "scope": "markup.heading.setext",
+                "settings": {
+                    "fontStyle": "",
+                    "foreground": "#ddbb88"
+                }
+            }
+        ]
+    },
+    "workbench.startupEditor": "newUntitledFile",
+    "files.associations": {
+        "*.jbuilder": "ruby"
+    },
+    "explorer.confirmDelete": false,
+    "liveshare.featureSet": "insiders",
+    "rubyTestExplorer.testFramework": "rspec",
+    "dateTime.showDayOfWeek": true,
+    "dateTime.showDayOfMonth": true,
+    "dateTime.showMonth": true,
+    "dateTime.showAMPM": true,
+    "explorer.confirmDragAndDrop": false,
+    "editor.minimap.maxColumn": 60,
+    "color-highlight.languages": [
+        "*"
+    ],
+    "workbench.iconTheme": "material-icon-theme"
+}

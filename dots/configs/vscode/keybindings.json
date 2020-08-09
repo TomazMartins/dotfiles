@@ -1,0 +1,53 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "meta+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+shift+[BracketLeft]",
+    "command": "-workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+shift+q",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+p",
+    "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+alt+h",
+    "command": "git.viewHistory"
+  },
+  {
+    "key": "alt+f12",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "f12",
+    "command": "-editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "alt+g",
+    "command": "workbench.action.gotoMethod"
+  },
+  {
+    "key": "shift+alt+2",
+    "command": "workbench.action.editorLayoutTwoColumns"
+  },
+  {
+    "key": "shift+alt+3",
+    "command": "workbench.action.editorLayoutThreeColumns"
+  },
+  {
+    "key": "shift+alt+pageup",
+    "command": "cursorColumnSelectLeft"
+  },
+  {
+    "key": "shift+alt+pagedown",
+    "command": "cursorColumnSelectRight"
+  }
+]
