@@ -1,9 +1,9 @@
 # [WIP] dotfiles
-To give execute permission:
+Give execute permission:
 ```
 sudo chmod 777 ./install.sh
 ```
-To run:
+Run:
 ```
 sudo ./install.sh
 ```

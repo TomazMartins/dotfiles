@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
-BASEDIR=$(dirname "$0")
+ROOTDIR=$(dirname "$0")
 
 # AUX Functions ==================================================
-source $BASEDIR/scripts/aux/colors.sh
-source $BASEDIR/scripts/aux/print.sh
-source $BASEDIR/scripts/aux/snaps.sh
-source $BASEDIR/scripts/aux/apts.sh
+source $ROOTDIR/scripts/aux/colors.sh
+source $ROOTDIR/scripts/aux/print.sh
+source $ROOTDIR/scripts/aux/syncs.sh
+source $ROOTDIR/scripts/aux/snaps.sh
+source $ROOTDIR/scripts/aux/apts.sh
 
 print_divider
 print_message 'DOTFILE' 'WELCOME' 'Welcome to the dotfiles install/configuration central'
@@ -15,7 +16,7 @@ print_divider
 echo ''
 
 # SRC Scripts   ==================================================
-source $BASEDIR/scripts/src/system.sh
-source $BASEDIR/scripts/src/entertainment.sh
-source $BASEDIR/scripts/src/development.sh
-source $BASEDIR/scripts/src/utilities.sh
+source $ROOTDIR/scripts/src/system.sh $ROOTDIR
+source $ROOTDIR/scripts/src/entertainment.sh $ROOTDIR
+source $ROOTDIR/scripts/src/development.sh $ROOTDIR
+source $ROOTDIR/scripts/src/utilities.sh $ROOTDIR
