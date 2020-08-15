@@ -23,8 +23,12 @@ function configure() {
   which code >> /dev/null 2>&1
 
   if [ ${?} -ne 0 ]; then
-    link $application $operation $ROOTDIR/dots/configs/vscode/keybindings.json
-    link $application $operation $ROOTDIR/dots/configs/vscode/settings.json
+    origin_keybindings=$ROOTDIR/dots/configs/vscode/keybindings.json
+    origin_settings=$ROOTDIR/dots/configs/vscode/settings.json
+    destiny=${HOME}/.config/Code/User/
+
+    copy $application $operation $origin_keybindings $destiny
+    copy $application $operation $origin_settings $destiny
 
     plugin evgeniypetukhov.dark-low-contrast
     plugin miguel-savignano.ruby-symbols

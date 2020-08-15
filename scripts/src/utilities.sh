@@ -3,12 +3,21 @@
 # ==============================================================================
 #                                   UTILITIES
 # ==============================================================================
-# install_apt curl
-# install_apt tree
-# install_apt wget
+ROOTDIR=$1
 
-# install_snap gimp
+# APT Packges      =============================================================
+install_apt curl
+install_apt tree
+install_apt wget
+
+# SNAP Packages    =============================================================
+install_snap gimp
 # install_snap onlyoffice-desktopeditors
-# install_snap telegram-desktop
-# install_snap skype
-# install_snap htmldoc
+install_snap telegram-desktop
+install_snap htmldoc
+install_snap skype
+
+# Complex Packages =============================================================
+BASEDIR=$(dirname "$0")
+
+source $BASEDIR/progs/zsh.sh $ROOTDIR
