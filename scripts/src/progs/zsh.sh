@@ -4,7 +4,7 @@
 #                                   ZSH
 # ==============================================================================
 ROOTDIR=$(dirname "$0")
-application='code'
+application='zsh'
 
 # Functions ====================================================================
 function install_oh_my_zsh() {
@@ -28,6 +28,10 @@ function install_zsh() {
   install_apt zsh
 }
 
+function install_fonts-powerline() {
+  sudo apt install fonts-powerline
+}
+
 function configure_theme_powelevel10k_zsh() {
   operation='Configure'
 
@@ -46,14 +50,33 @@ function configure_theme_powelevel10k_zsh() {
   fi
 }
 
+function configure_zsh_syntax_highlighting() {
+  operation='Configure'
+
+  print_message $application $operation 'Configuring zsh plugin: zsh_syntax_highlighting'
+
+  ZSHSYNTAXDIR=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+  if [ ! -d "$ZSHSYNTAXDIR" ]; then
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git \
+      ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting \
+      >> /dev/null 2>&1
+
+    print_ok $application $operation 'zsh_syntax_highlighting is installed'
+  else
+    print_message $application $operation 'zsh_syntax_highlighting is already installed'
+  fi
+}
+
 function zsh() {
   install_zsh 
   install_oh_my_zsh
   configure_theme_powelevel10k_zsh
+  configure_zsh_syntax_highlighting
 
   copy_home $application $operation $ROOTDIR/dots/home/zsh/.zshrc
 
-  chsh -s $(which zsh) >> /dev/null 2>&1
+  chsh -s $(which zsh)
 }
 
 
