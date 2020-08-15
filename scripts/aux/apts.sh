@@ -4,7 +4,7 @@
 #                              APT INSTALLATIONS
 # ==============================================================================
 # BEGIN Messages ===============================================================
-function message_ok() {
+function message_apt_ok() {
   application=$1
   operation="Install"
   message="Package ${C}$application${NONE} was successfully installed"
@@ -12,7 +12,7 @@ function message_ok() {
   print_ok $application $operation "$message"
 }
 
-function message() {
+function message_apt() {
   application=$1
   operation="Install"
   message="$2"
@@ -20,7 +20,7 @@ function message() {
   print_message $application $operation "$message"
 }
 
-function message_error() {
+function message_apt_error() {
   application=$1
   operation="Install"
   message="Package ${C}$application${NONE} doesn't exist or occurs some error"
@@ -34,7 +34,7 @@ function message_error() {
 function install_apt() {
   application=${1}
 
-  message $application "Installing ${C}${application}${NONE}"
+  message_apt $application "Installing ${C}${application}${NONE}"
   which $application >> /dev/null 2>&1
 
   if [ ${?} -ne 0 ]; then
@@ -42,11 +42,11 @@ function install_apt() {
     which $application >> /dev/null 2>&1
 
     if [ ${?} -eq 0 ]; then
-      message_ok $application
+      message_apt_ok $application
     else
-      message_error $application
+      message_apt_error $application
     fi
   else
-    message $application "Package ${C}$application${NONE} is already installed" 
+    message_apt $application "Package ${C}$application${NONE} is already installed" 
   fi
 }

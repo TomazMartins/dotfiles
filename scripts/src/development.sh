@@ -3,7 +3,7 @@
 # ==============================================================================
 #                                   DEVELOPMENT
 # ==============================================================================
-ROOTDIR=$1
+print_divider
 
 # APT Packges      =============================================================
 install_apt git
@@ -21,6 +21,9 @@ install_snap slack
 
 
 # Complex Packages =============================================================
-BASEDIR=$(dirname "$0")
+ROOTDIR=$(dirname "$0")
 
-source $BASEDIR/progs/vscode.sh $ROOTDIR
+source $ROOTDIR/scripts/src/progs/vscode.sh
+
+print_divider
+echo ''

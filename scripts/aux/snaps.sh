@@ -5,7 +5,7 @@
 # ==============================================================================
 
 # BEGIN Messages ===============================================================
-function message_ok() {
+function message_snap_ok() {
   application=$1
   operation="Install"
   message="Snap ${C}$application${NONE} was successfully installed"
@@ -13,7 +13,7 @@ function message_ok() {
   print_ok $application $operation "$message"
 }
 
-function message() {
+function message_snap() {
   application=$1
   operation="Install"
   message="$2"
@@ -21,7 +21,7 @@ function message() {
   print_message $application $operation "$message"
 }
 
-function message_warning() {
+function message_snap_warning() {
   application=$1
   operation="Install"
   message="Snap ${C}$application${NONE} doesn't exist. I will try with classic option..."
@@ -29,7 +29,7 @@ function message_warning() {
   print_message $application $operation "$message"
 }
 
-function message_error() {
+function message_snap_error() {
   application=$1
   operation="Install"
   message="Snap ${C}$application${NONE} doesn't exist or occurs some error"
@@ -43,7 +43,7 @@ function message_error() {
 function install_snap() {
   application=${1}
 
-  message $application "Installing ${C}${application}${NONE}"
+  message_snap $application "Installing ${C}${application}${NONE}"
   which $application >> /dev/null 2>&1
 
   if [ ${?} -ne 0 ]; then
@@ -51,20 +51,20 @@ function install_snap() {
     which $application >> /dev/null 2>&1
 
     if [ ${?} -eq 0 ]; then
-      message_ok $application
+      message_snap_ok $application
     else
-      message_warning $application
+      message_snap_warning $application
 
       snap install $application --classic >> /dev/null 2>&1
       which $application >> /dev/null 2>&1
 
       if [ ${?} -eq 0 ]; then
-        message_ok $application
+        message_snap_ok $application
       else
-        message_error $application
+        message_snap_error $application
       fi
     fi
   else
-    message $application "Snap ${C}$application${NONE} is already installed" 
+    message_snap $application "Snap ${C}$application${NONE} is already installed" 
   fi
 }

@@ -3,8 +3,8 @@
 # ==============================================================================
 #                                       VSCODE
 # ==============================================================================
+ROOTDIR=$(dirname "$0")
 application='code'
-ROOTDIR=$1
 
 # Functions ====================================================================
 function install() {
@@ -12,15 +12,19 @@ function install() {
 }
 
 function plugin() {
-  print_message $application 'Configure' 'Adding plugin to VS Code'
-  name="${1}"
+  operation='Configure'
+  print_message $application $operation 'Adding plugin to VS Code'
+  name=$1
 
-  code --install-extension ${name} --force
+  sudo -u zamott code --install-extension ${name} --force >> /dev/null 2>&1
+
+  print_ok $application $operation "Plugin ${name} is installed"
 }
 
 function configure() {
   operation='Configure'
-  which code >> /dev/null 2>&1
+
+  which bin/snap/code >> /dev/null 2>&1
 
   if [ ${?} -ne 0 ]; then
     origin_keybindings=$ROOTDIR/dots/configs/vscode/keybindings.json

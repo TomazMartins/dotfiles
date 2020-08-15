@@ -3,7 +3,6 @@
 # ==============================================================================
 #                                   UTILITIES
 # ==============================================================================
-ROOTDIR=$1
 
 # APT Packges      =============================================================
 install_apt curl
@@ -18,6 +17,6 @@ install_snap htmldoc
 install_snap skype
 
 # Complex Packages =============================================================
-BASEDIR=$(dirname "$0")
+ROOTDIR=$(dirname "$0")
 
-source $BASEDIR/progs/zsh.sh $ROOTDIR
+source $ROOTDIR/scripts/src/progs/zsh.sh
