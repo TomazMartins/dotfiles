@@ -31,6 +31,15 @@ function cleanup_system() {
   print_ok $application $operation "Sytem cleaned"
 }
 
+function configure_basics() {
+  operation='Configure'
+  application=$1
+
+  print_message $application $operation 'Configure basic system'
+  gsettings set org.gnome.desktop.wm.preferences button-layout 'close,minimize,maximize:'
+  print_ok $application $operation 'System configured'
+}
+
 
 # Main function ================================================================
 function system() {
@@ -43,6 +52,7 @@ function system() {
   upgrade_system $application
   cleanup_system $application
 
+  configure_basics $application
   print_divider
   echo ''
 }
