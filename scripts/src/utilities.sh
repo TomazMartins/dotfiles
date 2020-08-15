@@ -3,6 +3,7 @@
 # ==============================================================================
 #                                   UTILITIES
 # ==============================================================================
+print_divider
 
 # APT Packges      =============================================================
 install_apt curl
@@ -20,3 +21,6 @@ install_snap skype
 ROOTDIR=$(dirname "$0")
 
 source $ROOTDIR/scripts/src/progs/zsh.sh
+
+print_divider
+echo ''
