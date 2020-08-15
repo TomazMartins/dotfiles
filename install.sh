@@ -18,5 +18,5 @@ echo ''
 # SRC Scripts   ==================================================
 #source $ROOTDIR/scripts/src/system.sh
 #source $ROOTDIR/scripts/src/entertainment.sh
-source $ROOTDIR/scripts/src/development.sh
-#source $ROOTDIR/scripts/src/utilities.sh
+# source $ROOTDIR/scripts/src/development.sh
+source $ROOTDIR/scripts/src/utilities.sh
