@@ -8,17 +8,20 @@ application='code'
 
 # Functions ====================================================================
 function install() {
-  install_apt temrinator
+  install_apt terminator
 }
 
 function configure() {
   operation='Configure'
 
-  prigin_path=$ROOTDIR/dots/configs/terminator/config
+  origin_path=$ROOTDIR/dots/configs/terminator/config
   destiny_path=${HOME}/.config/terminator
 
-  mkdir $destiny_path
-  copy $application $operation $origin_ath $destiny_path
+  if [ ! -d $destiny_path ]; then
+    mkdir $destiny_path >> /dev/null 2>&1
+  fi
+
+  copy $application $operation $origin_path $destiny_path
 }
 
 function terminator() {

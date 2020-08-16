@@ -28,7 +28,7 @@ function install_zsh() {
   install_apt zsh
 }
 
-function install_fonts-powerline() {
+function install_fonts_powerline() {
   sudo apt install fonts-powerline
 }
 
@@ -71,12 +71,13 @@ function configure_zsh_syntax_highlighting() {
 function zsh() {
   install_zsh 
   install_oh_my_zsh
+  install_fonts_powerline
   configure_theme_powelevel10k_zsh
   configure_zsh_syntax_highlighting
 
   copy_home $application $operation $ROOTDIR/dots/home/zsh/.zshrc
 
-  chsh -s /bin/zsh
+  sudo -u zamott chsh -s $(which zsh)
 }
 
 
