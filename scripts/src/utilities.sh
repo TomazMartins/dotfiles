@@ -6,6 +6,7 @@
 print_divider
 
 # APT Packges      =============================================================
+install_apt ubuntu-restricted-extras
 install_apt curl
 install_apt tree
 install_apt wget
