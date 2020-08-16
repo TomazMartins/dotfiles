@@ -1,0 +1,5 @@
+[user]
+	name = Tomaz Martins
+	email = tomaz@todocartoes.com.br
+[core]
+	editor = nano -r 72

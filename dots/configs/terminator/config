@@ -1,0 +1,97 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+  title_inactive_bg_color = "#729fcf"
+  title_receive_bg_color = "#8ae234"
+  title_transmit_bg_color = "#204a87"
+[keybindings]
+  edit_tab_title = <Primary><Alt>i
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = c5c06cdd-43f3-4925-9838-49d2427bff8e
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 55:27
+      size = 1865, 1025
+      title = zamott@zamott: ~
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 1136
+      ratio = 0.610752688172
+      type = HPaned
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = terminal
+      title = terminal
+      type = Terminal
+      uuid = c5c06cdd-43f3-4925-9838-49d2427bff8e
+    [[[terminal3]]]
+      order = 1
+      parent = child1
+      profile = server
+      title = aux
+      type = Terminal
+      uuid = 09f1e22a-523f-4336-94f2-f65293406aa4
+  [[ngrok]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = c433476c-b23f-4c9a-b030-0ad220908dfc
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 55:27
+      size = 1311, 713
+      title = zamott@zamott: ~
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 716
+      ratio = 0.548238897397
+      type = HPaned
+    [[[terminal2]]]
+      order = 0
+      parent = child1
+      profile = async-app
+      title = terminal
+      type = Terminal
+      uuid = c433476c-b23f-4c9a-b030-0ad220908dfc
+    [[[terminal3]]]
+      order = 1
+      parent = child1
+      profile = default
+      title = ngrok
+      type = Terminal
+      uuid = da798d3d-ebb3-496b-ab33-9b51759b2be1
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.7
+    cursor_color = "#aaaaaa"
+    login_shell = True
+    scrollback_lines = 100000
+  [[server]]
+    cursor_color = "#fce94f"
+    cursor_color_fg = False
+    foreground_color = "#555753"
+    login_shell = True
+    scrollback_infinite = True
+  [[sidekiq]]
+    cursor_color = "#ef2929"
+    cursor_color_fg = False
+    login_shell = True
+    scrollback_infinite = True
+  [[terminal]]
+    background_darkness = 0.8
+    background_type = transparent
+    cursor_color = "#729fcf"
+    cursor_color_fg = False
+    login_shell = True
+    scrollback_infinite = True

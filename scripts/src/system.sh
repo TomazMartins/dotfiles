@@ -40,6 +40,17 @@ function configure_basics() {
   print_ok $application $operation 'System configured'
 }
 
+function configure_basic_dotfiles() {
+  operation='Configure'
+  application=$1
+
+  copy_home $application $operation $ROOTDIR/dots/home/bash/.bash_profile
+  copy_home $application $operation $ROOTDIR/dots/home/bash/.bashrc
+
+  copy_home $application $operation $ROOTDIR/dots/home/.gitconfig
+  copy_home $application $operation $ROOTDIR/dots/home/.profile
+}
+
 
 # Main function ================================================================
 function system() {
@@ -53,6 +64,7 @@ function system() {
   cleanup_system $application
 
   configure_basics $application
+  configure_basic_dotfiles $application
   print_divider
   echo ''
 }

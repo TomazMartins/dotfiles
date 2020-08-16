@@ -20,6 +20,8 @@ install_snap skype
 # Complex Packages =============================================================
 ROOTDIR=$(dirname "$0")
 
+source $ROOTDIR/scripts/src/progs/chrome.sh
+source $ROOTDIR/scripts/src/progs/terminator.sh
 source $ROOTDIR/scripts/src/progs/zsh.sh
 
 print_divider

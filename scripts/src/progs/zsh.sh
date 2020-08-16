@@ -76,7 +76,7 @@ function zsh() {
 
   copy_home $application $operation $ROOTDIR/dots/home/zsh/.zshrc
 
-  chsh -s $(which zsh)
+  chsh -s /bin/zsh
 }
 
 
