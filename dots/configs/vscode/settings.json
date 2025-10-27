@@ -3,22 +3,23 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "editor.formatOnPaste": true,
     "editor.lineHeight": 17,
-    "editor.fontFamily": "'ubuntu monospace', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.fontFamily": "'FiraCode Nerd Font', Consolas, 'Courier New', monospace",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontLigatures.enabled": true,
     "editor.tabSize": 2,
     "editor.renderWhitespace": "all",
-    "editor.fontSize": 12,
     "editor.rulers": [
         80
     ],
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "Monokai Low Contrast",
+    "workbench.colorTheme": "Cobalt2",
     "editor.tokenColorCustomizations": {
         "textMateRules": [
             {
                 "name": "comments",
                 "scope": "comment",
                 "settings": {
-                    "foreground": "#00CC00"
+                    "foreground": "#5C6370"
                 }
             },
             {
@@ -39,7 +40,7 @@
                 "name": "Built-in constant",
                 "scope": "constant.language",
                 "settings": {
-                    "foreground": "#2277FF",
+                    "foreground": "#2277FA",
                     "fontStyle": "bold"
                 }
             },
@@ -57,14 +58,14 @@
                 "name": "Variable",
                 "scope": "variable",
                 "settings": {
-                    "foreground": "#FFFFFF"
+                    "foreground": "#ABB2BF"
                 }
             },
             {
                 "name": "Keyword",
                 "scope": "keyword",
                 "settings": {
-                    "foreground": "#065196",
+                    "foreground": "#2277ff",
                     "fontStyle": "bold"
                 }
             },
@@ -92,14 +93,14 @@
                 ],
                 "settings": {
                     "fontStyle": "bold",
-                    "foreground": "#CCCC00"
+                    "foreground": "#E5C07B"
                 }
             },
             {
                 "name": "Inherited class",
                 "scope": "entity.other.inherited-class",
                 "settings": {
-                    "foreground": "#CCCC00"
+                    "foreground": "#E5C07B"
                 }
             },
             {
@@ -107,14 +108,14 @@
                 "scope": "entity.name.function",
                 "settings": {
                     "fontStyle": "bold",
-                    "foreground": "#CCCC00"
+                    "foreground": "#D3AF37"
                 }
             },
             {
                 "name": "Function argument",
                 "scope": "variable.parameter",
                 "settings": {
-                    "fontStyle": "italic",
+                    "fontStyle": "",
                     "foreground": "#2277ff"
                 }
             },
@@ -138,7 +139,7 @@
                 "name": "Library function",
                 "scope": "support.function",
                 "settings": {
-                    "foreground": "#E0E066",
+                    "foreground": "#50FA7B",
                     "fontStyle": "italic underline",
                 }
             },
@@ -147,7 +148,7 @@
                 "scope": "support.constant",
                 "settings": {
                     "fontStyle": "italic underline",
-                    "foreground": "#E0E066"
+                    "foreground": "#BD93F9"
                 }
             },
             {
@@ -268,5 +269,43 @@
     "color-highlight.languages": [
         "*"
     ],
-    "workbench.iconTheme": "material-icon-theme"
+    "workbench.iconTheme": "material-icon-theme",
+    "gitlens.ai.model": "vscode",
+    "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+    "security.allowedUNCHosts": [
+        "wsl.localhost"
+    ],
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.fontSize": 12,
+    "editor.cursorBlinking": "smooth",
+    // COPILOT GUIDELINES ========================================================
+    "github.copilot.chat.codeGeneration.useInstructionFiles": false,
+    "github.copilot.chat.commitMessageGeneration.instructions": [
+        {
+            "file": ".github/copilot-guidelines/copilot-commit-message-guidelines.md"
+        }
+    ],
+    "github.copilot.chat.codeGeneration.instructions": [
+        {
+            "file": ".github/copilot-guidelines/copilot-code-generation-guidelines.md"
+        },
+        {
+            "file": ".github/copilot-guidelines/copilot-coding-style-guidelines.md"
+        },
+        {
+            "file": ".github/copilot-guidelines/copilot-application-guidelines.md"
+        }
+    ],
+    "github.copilot.chat.testGeneration.instructions": [
+        {
+            "file": ".github/copilot-guidelines/copilot-test-generation-guidelines.md"
+        }
+    ],
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+        {
+            "file": ".github/copilot-guidelines/copilot-pull-request-description-guidelines.md"
+        }
+    ],
+    "workbench.tree.indent": 12,
+    "chat.fontSize": 10,
 }

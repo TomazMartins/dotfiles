@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -9,6 +16,7 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 # ===================================================================================
 plugins=(
   zsh-syntax-highlighting
+  zsh-autosuggestions
   docker-compose
   git-extras
   vagrant
@@ -71,7 +79,8 @@ alias la='ls -a --group-directories-first'  # listing hidden files
 alias l1a='ls -1a --group-directories-first'  # listing hidden files in a column
 alias lr='ls -R --group-directories-first'  # listing recursive
 
-alias git-ready="git fetch --prune && git pull origin master"
+alias ggready="git fetch --prune && ggpull"
+alias gcstg="git checkout staging"
 alias hc="history -c"
 alias h="history"
 
@@ -128,6 +137,35 @@ function prune_containers() {
   sudo docker system prune
 }
 
+# Alias dinâmico para dcr com nome do repositório Git
+# OBS: Essa função é útil no contexto da TodoIncomm
+function dcrapi() {
+  local repo_root
+  local repo_name
+  
+  # Obtém o diretório raiz do repositório Git
+  repo_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  
+  if [[ -z "$repo_root" ]]; then
+    echo "Erro: você não está dentro de um repositório Git." >&2
+    return 1
+  fi
+  
+  # Extrai apenas o nome do diretório raiz
+  repo_name="${repo_root##*/}"
+  
+  # Executa o comando dcr com o nome do repositório + -api
+  docker-compose run "${repo_name}-api" "$@"
+}
+
+# Get IP adress on ethernet
+function my_ip()
+{
+    MY_IP=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 } ' |
+      sed -e s/addr://)
+    echo ${MY_IP:-"Not connected"}
+}
+
 
 # ==============================================================================
 #                                 VARIABLES AND PATH
@@ -136,3 +174,6 @@ PATH="$GEM_HOME/bin:$HOME/.bin:$PATH"
 [ -s ${HOME}/.rvm/scripts/rvm ] && source ${HOME}/.rvm/scripts/rvm
 
 source $ZSH/oh-my-zsh.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
